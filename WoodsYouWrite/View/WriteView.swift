@@ -17,65 +17,65 @@ struct WriteView: View {
     @State var texttext = ""
     
     var body: some View {
-            if let journal = currentJournal {
-                VStack {
-                    ZStack {
-                        TextEditor(text: $texttext)
-                        
-                        if journal.notes.isEmpty {
-                            VStack {
-                                Text("작성된 일기가 없습니다.")
-                                    .font(.title3)
-                                Text("탭하여 작성하기")
-                                    .font(.callout)
-                            }
-                            .foregroundStyle(.secondary)
+        if let journal = currentJournal {
+            VStack {
+                ZStack {
+                    TextEditor(text: $texttext)
+                    
+                    if journal.notes.isEmpty {
+                        VStack {
+                            Text("작성된 일기가 없습니다.")
+                                .font(.title3)
+                            Text("탭하여 작성하기")
+                                .font(.callout)
                         }
-                    }
-                    .padding()
-                }
-                .navigationTitle(journal.date.formatted(.dateTime.day().month().year()))
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            showAlert = true
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(.red)
-                        }
+                        .foregroundStyle(.secondary)
                     }
                 }
-                .toolbar {
-                    ToolbarItem {
-                        Button {
-                            let newJournal = Journal(date: journal.date, dateString: journal.date.formattedDateYearMonthDay(), notes: texttext)
-                            modelContext.delete(journal)
-                            modelContext.insert(newJournal)
-                            try? modelContext.save()
-                            dismiss()
-                        } label: {
-                            Image(systemName: "checkmark")
-                                .foregroundStyle(.green)
-                        }
-                    }
-                }
-                .onAppear {
-                    texttext = currentJournal?.notes ?? ""
-                }
-                .navigationBarBackButtonHidden()
-                .alert("일기를 삭제하시겠습니까?", isPresented: $showAlert) {
-                    Button("삭제", role: .destructive) {
-                        
-                        modelContext.delete(journal)
-                        try? modelContext.save()
-                        
-                        dismiss()
-                    }
-                    Button("취소", role: .cancel) { }
-                }
-            } else {
-                Text("값없음")
+                .padding()
             }
+            .navigationTitle(journal.date.formatted(.dateTime.day().month().year()))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showAlert = true
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.red)
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        let newJournal = Journal(date: journal.date, dateString: journal.date.formattedDateYearMonthDay(), notes: texttext)
+                        modelContext.delete(journal)
+                        modelContext.insert(newJournal)
+                        try? modelContext.save()
+                        dismiss()
+                    } label: {
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.green)
+                    }
+                }
+            }
+            .onAppear {
+                texttext = currentJournal?.notes ?? ""
+            }
+            .navigationBarBackButtonHidden()
+            .alert("일기를 삭제하시겠습니까?", isPresented: $showAlert) {
+                Button("삭제", role: .destructive) {
+                    
+                    modelContext.delete(journal)
+                    try? modelContext.save()
+                    
+                    dismiss()
+                }
+                Button("취소", role: .cancel) { }
+            }
+        } else {
+            Text("값없음")
+        }
     }
 }

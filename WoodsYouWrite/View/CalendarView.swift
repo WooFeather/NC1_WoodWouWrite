@@ -12,13 +12,13 @@ struct CalendarView: View {
     @Binding var clickedCurrentMonthDates: Date
     
     
-//    init(
-//        month: Date = Date(),
-//        clickedCurrentMonthDates: Date? = nil
-//    ) {
-//        _month = State(initialValue: month)
-//        _clickedCurrentMonthDates = State(initialValue: clickedCurrentMonthDates)
-//    }
+    //    init(
+    //        month: Date = Date(),
+    //        clickedCurrentMonthDates: Date? = nil
+    //    ) {
+    //        _month = State(initialValue: month)
+    //        _clickedCurrentMonthDates = State(initialValue: clickedCurrentMonthDates)
+    //    }
     
     var body: some View {
         VStack {

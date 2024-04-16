@@ -65,18 +65,29 @@ struct ContentView: View {
                 Divider()
                     .padding(.horizontal)
                 
+                Spacer()
                 
                 NavigationLink(destination: WriteView(currentJournal: queryJournal(date: selectedDate))) {
                     if isJournalExist(date: selectedDate) {
-                        Text("\(queryJournal(date: selectedDate).notes)")
+                        VStack(alignment: .leading) {
+                            Text("\(queryJournal(date: selectedDate).date.formattedDayKR())")
+                                .font(.title2.bold())
+                                .frame(alignment: .topLeading)
+                            Text("\(queryJournal(date: selectedDate).notes)")
+                        }
+                            .foregroundStyle(.black)
                     } else {
                         DetailView()
+                            .foregroundStyle(.gray)
                     }
                 }
+                
+                
+                Spacer()
             }
-//            .onChange(of: selectedDate, { oldValue, newValue in
-//                showJournal = queryJournal(date: selectedDate))
-//            })
+            //            .onChange(of: selectedDate, { oldValue, newValue in
+            //                showJournal = queryJournal(date: selectedDate))
+            //            })
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
