@@ -11,17 +11,17 @@
 		7984F0712BC81B4B00CA6152 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F0702BC81B4B00CA6152 /* ContentView.swift */; };
 		7984F0732BC81B4D00CA6152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7984F0722BC81B4D00CA6152 /* Assets.xcassets */; };
 		7984F0762BC81B4D00CA6152 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7984F0752BC81B4D00CA6152 /* Preview Assets.xcassets */; };
-		7984F07E2BC81C0D00CA6152 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7984F07D2BC81C0D00CA6152 /* SDWebImageSwiftUI */; };
 		7984F0802BC81C7E00CA6152 /* fire-flame.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7984F07F2BC81C7E00CA6152 /* fire-flame.gif */; };
 		7984F0822BC81DF300CA6152 /* FireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F0812BC81DF300CA6152 /* FireView.swift */; };
 		7984F0AA2BC8CA5C00CA6152 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F0A92BC8CA5C00CA6152 /* CalendarView.swift */; };
 		7984F0B12BCA6DFB00CA6152 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F0B02BCA6DFB00CA6152 /* WriteView.swift */; };
 		7984F1372BCE143600CA6152 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F1362BCE143600CA6152 /* Journal.swift */; };
 		7984F13D2BCE1BDE00CA6152 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F13C2BCE1BDE00CA6152 /* ListView.swift */; };
-		7984F13F2BCE26DB00CA6152 /* EditJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F13E2BCE26DB00CA6152 /* EditJournalView.swift */; };
 		7984F1412BCE45C300CA6152 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F1402BCE45C300CA6152 /* DateManager.swift */; };
 		7984F16A2BCE69F500CA6152 /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F1692BCE69F500CA6152 /* Date+DateFormatter.swift */; };
-		7984F16C2BCE70F200CA6152 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F16B2BCE70F200CA6152 /* DetailView.swift */; };
+		7984F16C2BCE70F200CA6152 /* EmptyJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F16B2BCE70F200CA6152 /* EmptyJournalView.swift */; };
+		7984F16F2BCF5AFC00CA6152 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7984F16E2BCF5AFC00CA6152 /* SDWebImageSwiftUI */; };
+		7984F1712BCF606A00CA6152 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7984F1702BCF606A00CA6152 /* JournalDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +36,10 @@
 		7984F0B02BCA6DFB00CA6152 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		7984F1362BCE143600CA6152 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		7984F13C2BCE1BDE00CA6152 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		7984F13E2BCE26DB00CA6152 /* EditJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJournalView.swift; sourceTree = "<group>"; };
 		7984F1402BCE45C300CA6152 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		7984F1692BCE69F500CA6152 /* Date+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatter.swift"; sourceTree = "<group>"; };
-		7984F16B2BCE70F200CA6152 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		7984F16B2BCE70F200CA6152 /* EmptyJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyJournalView.swift; sourceTree = "<group>"; };
+		7984F1702BCF606A00CA6152 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7984F07E2BC81C0D00CA6152 /* SDWebImageSwiftUI in Frameworks */,
+				7984F16F2BCF5AFC00CA6152 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,9 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				7984F13C2BCE1BDE00CA6152 /* ListView.swift */,
-				7984F13E2BCE26DB00CA6152 /* EditJournalView.swift */,
+				7984F1702BCF606A00CA6152 /* JournalDetailView.swift */,
 				7984F0702BC81B4B00CA6152 /* ContentView.swift */,
-				7984F16B2BCE70F200CA6152 /* DetailView.swift */,
+				7984F16B2BCE70F200CA6152 /* EmptyJournalView.swift */,
 				7984F0B02BCA6DFB00CA6152 /* WriteView.swift */,
 				7984F0A92BC8CA5C00CA6152 /* CalendarView.swift */,
 				7984F0812BC81DF300CA6152 /* FireView.swift */,
@@ -132,7 +132,7 @@
 			);
 			name = WoodsYouWrite;
 			packageProductDependencies = (
-				7984F07D2BC81C0D00CA6152 /* SDWebImageSwiftUI */,
+				7984F16E2BCF5AFC00CA6152 /* SDWebImageSwiftUI */,
 			);
 			productName = WoodsYouWrite;
 			productReference = 7984F06B2BC81B4B00CA6152 /* WoodsYouWrite.app */;
@@ -163,7 +163,7 @@
 			);
 			mainGroup = 7984F0622BC81B4B00CA6152;
 			packageReferences = (
-				7984F07C2BC81C0D00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				7984F16D2BCF5AFC00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 7984F06C2BC81B4B00CA6152 /* Products */;
 			projectDirPath = "";
@@ -197,12 +197,12 @@
 				7984F0712BC81B4B00CA6152 /* ContentView.swift in Sources */,
 				7984F0B12BCA6DFB00CA6152 /* WriteView.swift in Sources */,
 				7984F13D2BCE1BDE00CA6152 /* ListView.swift in Sources */,
-				7984F16C2BCE70F200CA6152 /* DetailView.swift in Sources */,
-				7984F13F2BCE26DB00CA6152 /* EditJournalView.swift in Sources */,
+				7984F16C2BCE70F200CA6152 /* EmptyJournalView.swift in Sources */,
 				7984F0AA2BC8CA5C00CA6152 /* CalendarView.swift in Sources */,
 				7984F06F2BC81B4B00CA6152 /* WoodsYouWriteApp.swift in Sources */,
 				7984F1412BCE45C300CA6152 /* DateManager.swift in Sources */,
 				7984F1372BCE143600CA6152 /* Journal.swift in Sources */,
+				7984F1712BCF606A00CA6152 /* JournalDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +410,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7984F07C2BC81C0D00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		7984F16D2BCF5AFC00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
@@ -421,9 +421,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7984F07D2BC81C0D00CA6152 /* SDWebImageSwiftUI */ = {
+		7984F16E2BCF5AFC00CA6152 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7984F07C2BC81C0D00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			package = 7984F16D2BCF5AFC00CA6152 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

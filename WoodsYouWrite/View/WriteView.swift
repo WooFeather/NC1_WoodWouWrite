@@ -34,7 +34,7 @@ struct WriteView: View {
                 }
                 .padding()
             }
-            .navigationTitle(journal.date.formatted(.dateTime.day().month().year()))
+            .navigationTitle(journal.date.formattedDateYearMonthDay())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -73,6 +73,9 @@ struct WriteView: View {
                     dismiss()
                 }
                 Button("취소", role: .cancel) { }
+                Button("삭제하지 않고 나가기", role: .none) {
+                    dismiss()
+                }
             }
         } else {
             Text("값없음")

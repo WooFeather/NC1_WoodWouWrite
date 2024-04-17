@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+struct EmptyJournalView: View {
     var body: some View {
         VStack {
             Text("작성된 일기가 없습니다.")
@@ -19,5 +19,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView()
+    EmptyJournalView()
 }

@@ -11,15 +11,6 @@ struct CalendarView: View {
     @State private var month: Date = Date()
     @Binding var clickedCurrentMonthDates: Date
     
-    
-    //    init(
-    //        month: Date = Date(),
-    //        clickedCurrentMonthDates: Date? = nil
-    //    ) {
-    //        _month = State(initialValue: month)
-    //        _clickedCurrentMonthDates = State(initialValue: clickedCurrentMonthDates)
-    //    }
-    
     var body: some View {
         VStack {
             headerView
@@ -87,7 +78,9 @@ struct CalendarView: View {
         let numberOfRows = Int(ceil(Double(daysInMonth + firstWeekday) / 7.0))
         let visibleDaysOfNextMonth = numberOfRows * 7 - (daysInMonth + firstWeekday)
         
-        let dateManager = DateManager.shared
+//        let dateManager = DateManager.shared
+        
+        var selectedDate: Date = Date()
         
         return LazyVGrid(columns: Array(repeating: GridItem(), count: 7)) {
             ForEach(-firstWeekday ..< daysInMonth + visibleDaysOfNextMonth, id: \.self) { index in
@@ -114,7 +107,7 @@ struct CalendarView: View {
                         let date = getDate(for: index)
                         clickedCurrentMonthDates = date
                         print("캘린더: \(clickedCurrentMonthDates.formattedDateYearMonthDay())")
-                        dateManager.date = date
+                        selectedDate = date
                     }
                 }
             }

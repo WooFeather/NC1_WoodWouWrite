@@ -16,7 +16,13 @@ extension Date {
     
     func formattedDateMonthDay() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM"
+        dateFormatter.dateFormat = "M / d"
+        return dateFormatter.string(from: self)
+    }
+    
+    func formattedDay() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: self)
     }
     
@@ -24,5 +30,11 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: self) + "일"
+    }
+    
+    func formattedMonthKR() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M"
+        return dateFormatter.string(from: self) + "월"
     }
 }
