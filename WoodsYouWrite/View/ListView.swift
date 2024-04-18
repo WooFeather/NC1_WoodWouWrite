@@ -35,8 +35,6 @@ struct ListView: View {
             .onDelete(perform: deleteJournals)
             .frame(maxHeight: 50)
         }
-        .navigationTitle("모아보기")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     func deleteJournals(_ indexSet: IndexSet) {

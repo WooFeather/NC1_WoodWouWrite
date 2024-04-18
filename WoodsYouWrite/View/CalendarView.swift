@@ -5,6 +5,7 @@
 //  Created by 조우현 on 4/12/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CalendarView: View {
@@ -91,7 +92,8 @@ struct CalendarView: View {
                         let clicked = clickedCurrentMonthDates == date
                         let isToday = date.formattedCalendarDayDate == today.formattedCalendarDayDate
                         
-                        CellView(day: day, clicked: clicked, isToday: isToday)
+//                        CellView(day: day, clicked: clicked, isToday: isToday)
+                        CellView(date: date, clicked: clicked, isToday: isToday)
                     } else if let prevMonthDate = Calendar.current.date(
                         byAdding: .day,
                         value: index + lastDayOfMonthBefore,
@@ -99,7 +101,7 @@ struct CalendarView: View {
                     ) {
                         let day = Calendar.current.component(.day, from: prevMonthDate)
                         
-                        CellView(day: day, isCurrentMonthDay: false)
+                        CellView(date: prevMonthDate, isCurrentMonthDay: false)
                     }
                 }
                 .onTapGesture {
@@ -117,11 +119,16 @@ struct CalendarView: View {
 
 // MARK: - 일자 셀 뷰
 private struct CellView: View {
-    private var day: Int
+    @Query var journals: [Journal]
+    // date는 위의 날짜그리드뷰에서 가져온 것이기 때문에 private붙이면 안됨
+    var date: Date
+    private var day: Int {
+        let day = Calendar.current.component(.day, from: date)
+        return day
+    }
     private var clicked: Bool
     private var isToday: Bool
     private var isCurrentMonthDay: Bool
-    private var isthereJournal: Bool
     private var textColor: Color {
         if clicked {
             return Color.white
@@ -142,17 +149,15 @@ private struct CellView: View {
     }
     
     fileprivate init(
-        day: Int,
+        date: Date,
         clicked: Bool = false,
         isToday: Bool = false,
-        isCurrentMonthDay: Bool = true,
-        isthereJournal: Bool = false
+        isCurrentMonthDay: Bool = true
     ) {
-        self.day = day
+        self.date = date
         self.clicked = clicked
         self.isToday = isToday
         self.isCurrentMonthDay = isCurrentMonthDay
-        self.isthereJournal = isthereJournal
     }
     
     fileprivate var body: some View {
@@ -164,24 +169,21 @@ private struct CellView: View {
             
             Spacer()
             
-            // 클릭하면 아래 빨간 동그라미 나오는 동작 -> 일기가 쓰여지면 장작 이모티콘이 나오게 하자
-            if clicked {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.red)
-                    .frame(width: 10, height: 10)
+            if isJournalExist(date: date) {
+                Text("🪵")
             } else {
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 20)
             }
-            
-            //        if isthereJournal {
-            //            Text("🪵")
-            //        } else {
-            //            Spacer()
-            //              .frame(height: 20)
-            //        }
         }
         .frame(height: 50)
+    }
+    
+    func isJournalExist(date: Date) -> Bool {
+        let filtered = journals.filter { journal in
+            journal.date.formattedDateYearMonthDay() == date.formattedDateYearMonthDay()
+        }
+        return !filtered.isEmpty
     }
 }
 
