@@ -45,7 +45,7 @@ struct WriteView: View {
                 }
                 .padding()
             }
-            .navigationTitle(journal.date.formattedDateYearMonthDay())
+            .navigationTitle(journal.date.formattedDateYearMonthDayWeekDay())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

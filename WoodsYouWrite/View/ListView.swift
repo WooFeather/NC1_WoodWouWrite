@@ -12,28 +12,69 @@ struct ListView: View {
     @Environment(\.modelContext) var modelContext
     @Query var journals: [Journal]
     
+    @State private var searchText = ""
+    
+    @Binding var isSerchable: Bool
+
+    var filterJournals: [Journal] {
+            if searchText.isEmpty {
+                return journals
+            } else {
+                return journals.filter { $0.notes.localizedCaseInsensitiveContains(searchText) }
+            }
+        }
+
+    
     var body: some View {
-        List {
-            ForEach(journals.sorted(by: { $0.date > $1.date }), id: \.self) { journal in
-                NavigationLink {
-                    JournalDetailView(journal: journal)
-                } label: {
-                    HStack() {
-                        Text(journal.date.formattedDay())
-                            .frame(maxWidth: 40)
-                            .font(.title)
-                            .bold()
-                        
-                        Divider()
-                            .padding(.vertical)
-                        
-                        Text(journal.notes.count > 40 ? "\(journal.notes.prefix(40))..." : journal.notes)
-                            .font(.callout)
+        if isSerchable {
+            List {
+                Section("4월") {
+                    ForEach(filterJournals.sorted(by: { $0.date > $1.date }), id: \.self) { journal in
+                        NavigationLink {
+                            JournalDetailView(journal: journal)
+                        } label: {
+                            HStack() {
+                                Text(journal.date.formattedDateSimpleDayKR())
+                                    .frame(maxWidth: 40)
+                                    .bold()
+                                
+                                Divider()
+                                    .padding(.vertical)
+                                
+                                Text(journal.notes.count > 40 ? "\(journal.notes.prefix(40))..." : journal.notes)
+                                    .font(.callout)
+                            }
+                        }
                     }
+                    .onDelete(perform: deleteJournals)
+                    .frame(maxHeight: 50)
                 }
             }
-            .onDelete(perform: deleteJournals)
-            .frame(maxHeight: 50)
+            .searchable(text: $searchText, prompt: "일기 내용 검색")
+        } else {
+            List {
+                Section("4월") {
+                    ForEach(filterJournals.sorted(by: { $0.date > $1.date }), id: \.self) { journal in
+                        NavigationLink {
+                            JournalDetailView(journal: journal)
+                        } label: {
+                            HStack() {
+                                Text(journal.date.formattedDateSimpleDayKR())
+                                    .frame(maxWidth: 40)
+                                    .bold()
+                                
+                                Divider()
+                                    .padding(.vertical)
+                                
+                                Text(journal.notes.count > 40 ? "\(journal.notes.prefix(40))..." : journal.notes)
+                                    .font(.callout)
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteJournals)
+                    .frame(maxHeight: 50)
+                }
+            }
         }
     }
     
@@ -45,6 +86,6 @@ struct ListView: View {
     }
 }
 
-#Preview {
-    ListView()
-}
+//#Preview {
+//    ListView()
+//}

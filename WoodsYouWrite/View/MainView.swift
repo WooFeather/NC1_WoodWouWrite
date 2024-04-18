@@ -23,7 +23,7 @@ struct MainView: View {
                         Text("모은 장작 개수")
                             .font(.title2)
                             .bold()
-                        Text("\(journals.count)개")
+                        Text("\(journals.count)개 🪵")
                             .font(.largeTitle)
                             .bold()
                     }
@@ -83,21 +83,11 @@ struct MainView: View {
                 Spacer()
             }
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         // settingView로 이동
                     } label: {
                         Image(systemName: "gearshape")
-                            .foregroundStyle(.black)
-                    }
-                }
-            }
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        // search action
-                    } label: {
-                        Image(systemName: "magnifyingglass")
                             .foregroundStyle(.black)
                     }
                 }

@@ -51,7 +51,7 @@ struct SlideJournalView: View {
                         VStack(alignment: .leading) {
                             
                             HStack {
-                                Text("\(journal.date.formattedDateYearMonthDay())")
+                                Text("\(journal.date.formattedDateYearMonthDayWeekDay())")
                                     .font(.title.bold())
                                 
                                 Spacer()

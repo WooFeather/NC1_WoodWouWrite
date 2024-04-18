@@ -13,12 +13,8 @@ struct JournalDetailView: View {
     var body: some View {
         VStack {
             HStack {
-                VStack(alignment: .leading) {
-                    Text("\(journal.date.formattedDateYear())")
-                    
-                    Text("\(journal.date.formattedDateMonthDay())")
+                    Text("\(journal.date.formattedDateYearMonthDayWeekDay())")
                         .font(.largeTitle.bold())
-                }
                 
                 Spacer()
             }

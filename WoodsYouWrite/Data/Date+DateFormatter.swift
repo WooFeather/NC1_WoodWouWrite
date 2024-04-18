@@ -14,6 +14,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func formattedDateYearMonthDayWeekDay() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd (E)"
+        return dateFormatter.string(from: self)
+    }
+    
     func formattedDateMonthDay() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M / d"
@@ -29,6 +36,12 @@ extension Date {
     func formattedDayKR() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: self) + "일"
+    }
+    
+    func formattedDateSimpleDayKR() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
         return dateFormatter.string(from: self) + "일"
     }
     

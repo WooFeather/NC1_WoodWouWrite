@@ -12,6 +12,8 @@ struct FirewoodView: View {
     
     @Query var journals: [Journal]
     
+    @State var isSerchable: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,7 +22,7 @@ struct FirewoodView: View {
                         Text("모은 장작 개수")
                             .font(.title2)
                             .bold()
-                        Text("\(journals.count)개")
+                        Text("\(journals.count)개 🪵")
                             .font(.largeTitle)
                             .bold()
                     }
@@ -51,12 +53,12 @@ struct FirewoodView: View {
                 
                 Spacer()
                 
-                ListView()
+                ListView(isSerchable: $isSerchable)
             }
             .toolbar {
                 ToolbarItem {
                     Button {
-                        // search action
+                        isSerchable.toggle()
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.black)

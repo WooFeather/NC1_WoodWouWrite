@@ -10,7 +10,13 @@ import SwiftUI
 struct CampfireView: View {
     var body: some View {
         VStack {
+            Spacer()
+            
             SlideJournalView()
+                .padding(.horizontal)
+            
+            Spacer()
+            
             FireView()
         }
     }
