@@ -12,7 +12,7 @@ import SwiftUI
 struct WoodsYouWriteApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(numOfJournal: 8)
+            ContentView()
         }
         .modelContainer(for: Journal.self)
     }

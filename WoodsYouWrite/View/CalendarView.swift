@@ -78,7 +78,7 @@ struct CalendarView: View {
         let numberOfRows = Int(ceil(Double(daysInMonth + firstWeekday) / 7.0))
         let visibleDaysOfNextMonth = numberOfRows * 7 - (daysInMonth + firstWeekday)
         
-//        let dateManager = DateManager.shared
+        //        let dateManager = DateManager.shared
         
         var selectedDate: Date = Date()
         

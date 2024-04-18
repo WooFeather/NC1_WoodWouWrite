@@ -13,11 +13,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query var journals: [Journal]
     
-    @State var numOfJournal: Int
-    
     @State var selectedDate: Date = Date()
-    
-    // @State var showJournal: Journal = .init()
     
     var body: some View {
         NavigationStack {
@@ -27,7 +23,7 @@ struct ContentView: View {
                         Text("모은 장작 개수")
                             .font(.title2)
                             .bold()
-                        Text("\(numOfJournal)개")
+                        Text("\(journals.count)개")
                             .font(.largeTitle)
                             .bold()
                     }
@@ -65,14 +61,11 @@ struct ContentView: View {
                 Divider()
                     .padding(.horizontal)
                 
-                
-                
                 LazyVStack(alignment: .leading) {
                     Text("\(queryJournal(date: selectedDate).date.formattedDateMonthDay())")
                         .font(.title2.bold())
                 }
                 .padding(.horizontal)
-                
                 
                 NavigationLink(destination: WriteView(currentJournal: queryJournal(date: selectedDate))) {
                     if isJournalExist(date: selectedDate) {
@@ -109,6 +102,9 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .onAppear {
+            print(journals.count)
         }
     }
     

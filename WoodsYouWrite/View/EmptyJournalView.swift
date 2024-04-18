@@ -11,8 +11,9 @@ struct EmptyJournalView: View {
     var body: some View {
         VStack {
             Text("작성된 일기가 없습니다.")
-                .font(.title2)
+                .font(.title3)
             Text("(탭하여 작성하기)")
+                .font(.callout)
         }
         
     }

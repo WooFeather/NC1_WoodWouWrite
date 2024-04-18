@@ -16,17 +16,28 @@ struct WriteView: View {
     
     @State var texttext = ""
     
+    // 작성된 텍스트가 있는지 확인하는 프로퍼티
+    var hasValidText: Bool {
+        let trimmedtext = texttext.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimmedtext.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     var body: some View {
         if let journal = currentJournal {
             VStack {
                 ZStack {
                     TextEditor(text: $texttext)
                     
-                    if journal.notes.isEmpty {
+                    if hasValidText == false {
                         VStack {
                             Text("작성된 일기가 없습니다.")
                                 .font(.title3)
-                            Text("탭하여 작성하기")
+                            Text("(탭하여 작성하기)")
                                 .font(.callout)
                         }
                         .foregroundStyle(.secondary)
@@ -53,11 +64,18 @@ struct WriteView: View {
                         modelContext.delete(journal)
                         modelContext.insert(newJournal)
                         try? modelContext.save()
+                        
                         dismiss()
                     } label: {
-                        Image(systemName: "checkmark")
-                            .foregroundStyle(.green)
+                        if hasValidText == true {
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(.green)
+                        } else {
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(.gray)
+                        }
                     }
+                    .disabled(hasValidText == false)
                 }
             }
             .onAppear {
@@ -72,6 +90,8 @@ struct WriteView: View {
                     
                     dismiss()
                 }
+                .disabled(hasValidText == false)
+                
                 Button("취소", role: .cancel) { }
                 Button("삭제하지 않고 나가기", role: .none) {
                     dismiss()

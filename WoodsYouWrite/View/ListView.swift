@@ -14,7 +14,7 @@ struct ListView: View {
     
     var body: some View {
         List {
-            ForEach(journals) { journal in
+            ForEach(journals.sorted(by: { $0.date > $1.date }), id: \.self) { journal in
                 NavigationLink {
                     JournalDetailView(journal: journal)
                 } label: {
@@ -27,19 +27,18 @@ struct ListView: View {
                         Divider()
                             .padding(.vertical)
                         
-                        Text(journal.notes.count > 30 ? "\(journal.notes.prefix(30))..." : journal.notes)
+                        Text(journal.notes.count > 40 ? "\(journal.notes.prefix(40))..." : journal.notes)
                             .font(.callout)
                     }
                 }
             }
             .onDelete(perform: deleteJournals)
             .frame(maxHeight: 50)
-            
         }
         .navigationTitle("모아보기")
         .navigationBarTitleDisplayMode(.inline)
     }
-
+    
     func deleteJournals(_ indexSet: IndexSet) {
         for index in indexSet {
             let journal = journals[index]
