@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 
-struct ContentView: View {
+struct MainView: View {
     @Environment(\.modelContext) var modelContext
     @Query var journals: [Journal]
     
@@ -38,7 +38,7 @@ struct ContentView: View {
                         .allowsTightening(false)
                         .padding(30)
                         .background {
-                            NavigationLink(destination: ListView()) {
+                            NavigationLink(destination: FirewoodView()) {
                                 Circle()
                                     .frame(width: 80)
                                     .foregroundStyle(.black)

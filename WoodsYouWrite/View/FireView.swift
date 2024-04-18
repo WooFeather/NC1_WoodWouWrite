@@ -15,7 +15,7 @@ struct FireView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 350)
-                .offset(y: 40)
+                .offset(y: 55)
             AnimatedImage(name: "fire-flame.gif")
                 .resizable()
                 .scaledToFit()

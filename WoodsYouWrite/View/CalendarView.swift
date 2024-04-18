@@ -171,9 +171,10 @@ private struct CellView: View {
             
             if isJournalExist(date: date) {
                 Text("🪵")
+                    .font(.footnote)
             } else {
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 15)
             }
         }
         .frame(height: 50)

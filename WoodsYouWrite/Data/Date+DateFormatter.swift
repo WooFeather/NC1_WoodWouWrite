@@ -37,4 +37,11 @@ extension Date {
         dateFormatter.dateFormat = "M"
         return dateFormatter.string(from: self) + "월"
     }
+    
+    func formattedDateYear() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
 }

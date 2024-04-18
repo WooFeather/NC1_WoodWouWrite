@@ -12,12 +12,33 @@ struct JournalDetailView: View {
     
     var body: some View {
         VStack {
-            Text("\(journal.date.formattedDateMonthDay())")
-            Text("\(journal.notes)")
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("\(journal.date.formattedDateYear())")
+                    
+                    Text("\(journal.date.formattedDateMonthDay())")
+                        .font(.largeTitle.bold())
+                }
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            
+            ScrollView {
+                Spacer()
+                
+                LazyVStack(alignment: .leading) {
+                    Text("\(journal.notes)")
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                
+                Spacer()
+            }
         }
     }
 }
 
 //#Preview {
-//    JournalDetailView()
+//    JournalDetailView(journal: journal)
 //}
