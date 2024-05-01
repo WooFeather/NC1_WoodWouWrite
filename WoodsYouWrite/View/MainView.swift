@@ -23,7 +23,7 @@ struct MainView: View {
                         Text("모은 장작 개수")
                             .font(.title2)
                             .bold()
-                        Text("\(journals.count)개 🪵")
+                        Text("\(currentJournalsForCurrentMonth())개 🪵")
                             .font(.largeTitle)
                             .bold()
                     }
@@ -127,6 +127,14 @@ struct MainView: View {
         }
         print(journals)
         return filtered.first
+    }
+    
+    func currentJournalsForCurrentMonth() -> Int {
+        let calendar = Calendar.current
+        return journals.filter { journal in
+            calendar.isDate(journal.date, equalTo: selectedDate, toGranularity: .month) &&
+            calendar.isDate(journal.date, equalTo: selectedDate, toGranularity: .year)
+        }.count
     }
 }
 
