@@ -45,6 +45,7 @@ struct CalendarView: View {
             Button(
                 action: {
                     changeMonth(by: -1)
+                    print(month)
                 },
                 label: {
                     Image(systemName: "chevron.left")
@@ -60,6 +61,7 @@ struct CalendarView: View {
             Button(
                 action: {
                     changeMonth(by: 1)
+                    print(month)
                 },
                 label: {
                     Image(systemName: "chevron.right")
@@ -125,6 +127,10 @@ private struct CellView: View {
     private var day: Int {
         let day = Calendar.current.component(.day, from: date)
         return day
+    }
+    private var month: Int {
+        let month = Calendar.current.component(.month, from: date)
+        return month
     }
     private var clicked: Bool
     private var isToday: Bool
