@@ -45,6 +45,7 @@ struct CalendarView: View {
             Button(
                 action: {
                     changeMonth(by: -1)
+                    print(month)
                 },
                 label: {
                     Image(systemName: "chevron.left")
@@ -60,6 +61,7 @@ struct CalendarView: View {
             Button(
                 action: {
                     changeMonth(by: 1)
+                    print(month)
                 },
                 label: {
                     Image(systemName: "chevron.right")

@@ -139,6 +139,6 @@ struct MainView: View {
 }
 
 //#Preview {
-//    ContentView(numOfJournal: 8)
+//    MainView(numOfJournal: 8)
 //}
-//
+
